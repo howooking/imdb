@@ -1,6 +1,7 @@
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
-import SearchBox from "./components/SearchBox";
+import Header from "../components/Header";
+import Navbar from "../components/Navbar";
+import SearchBox from "../components/SearchBox";
+import DarkmodeProvider from "./DarkmodeProvider";
 import "./globals.css";
 
 export const metadata = {
@@ -16,10 +17,12 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <Header />
-        <Navbar />
-        <SearchBox />
-        {children}
+        <DarkmodeProvider>
+          <Header />
+          <Navbar />
+          <SearchBox />
+          {children}
+        </DarkmodeProvider>
       </body>
     </html>
   );
