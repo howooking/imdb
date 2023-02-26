@@ -8,7 +8,7 @@ export default function Header() {
     <header className='py-7'>
       <div className='flex items-center justify-between font-bold'>
         <div className='flex gap-6'>
-          <MenuItem href='/' Icon={AiFillHome} title='Home' />
+          <MenuItem href='/' Icon={AiFillHome} title='HOME' />
           <MenuItem href='/about' Icon={AiFillInfoCircle} title='ABOUT' />
         </div>
         <div className='flex items-center gap-7'>
