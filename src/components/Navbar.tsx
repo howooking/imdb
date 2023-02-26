@@ -9,14 +9,13 @@ const NAV_MENU = [
     title: "Trending",
   },
   {
-    href: "/movies/toprated",
+    href: "/movies/top_rated",
     title: "Top Rated",
   },
 ];
 
 export default function Navbar() {
   const path = usePathname();
-  console.log(path);
   return (
     <nav className='bg-orange-200 py-4 dark:bg-gray-500'>
       <div className='flex justify-center gap-8 font-bold '>
