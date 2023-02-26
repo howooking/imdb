@@ -14,8 +14,7 @@ export default async function SortedMovies({
   const res = await fetch(
     `https://api.themoviedb.org/3/${
       sort === "top_rated" ? "movie/top_rated" : "trending/all/week"
-    }?api_key=${process.env.TMDB_API_KEY}&page=1`,
-    { next: { revalidate: 100000 } }
+    }?api_key=${process.env.TMDB_API_KEY}&page=1`
   );
 
   if (!res.ok) {
