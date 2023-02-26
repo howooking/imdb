@@ -6,7 +6,7 @@ import DarkmodeSwitch from "./DarkmodeSwitch";
 export default function Header() {
   return (
     <header className='py-7'>
-      <div className='mx-auto flex max-w-3xl items-center justify-between font-bold'>
+      <div className='flex items-center justify-between font-bold'>
         <div className='flex gap-6'>
           <MenuItem href='/' Icon={AiFillHome} title='Home' />
           <MenuItem href='/about' Icon={AiFillInfoCircle} title='ABOUT' />

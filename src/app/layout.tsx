@@ -18,10 +18,12 @@ export default function RootLayout({
     <html lang='en'>
       <body>
         <DarkmodeProvider>
-          <Header />
-          <Navbar />
-          <SearchBox />
-          {children}
+          <div className='mx-auto max-w-3xl'>
+            <Header />
+            <Navbar />
+            <SearchBox />
+            {children}
+          </div>
         </DarkmodeProvider>
       </body>
     </html>
