@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 
 export type MovieListProps = {
@@ -18,32 +22,45 @@ export default function MovieCard({
   backdrop_path,
   id,
 }: MovieListProps) {
-  return (
-    <div className='card glass cursor-pointer shadow-lg transition-all duration-200 hover:opacity-70'>
-      <figure>
-        <Image
-          src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
-          alt={original_title}
-          width={500}
-          height={300}
-          className='relative object-contain'
-          placeholder='blur'
-          blurDataURL='/loading.svg'
-        />
-      </figure>
-      <div className='p-3'>
-        <h2 className='truncate font-bold'>{original_title}</h2>
-        <p className='text-gray-400 line-clamp-3'>{overview}</p>
-        <p className='flex items-center justify-between text-gray-200'>
-          <p className='text-gray-100'>{release_date}</p>
-          <div className='flex items-center gap-2'>
-            <span>
-              <AiFillStar />
-            </span>
-            <div>{vote_average.toFixed(1)} / 10</div>
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  if (mounted) {
+    return (
+      <Link
+        href={`/movie/${id}`}
+        className='card glass cursor-pointer shadow-lg transition-all duration-200 hover:opacity-70'
+      >
+        <figure>
+          <Image
+            src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
+            alt={original_title}
+            width={500}
+            height={300}
+            className='relative object-contain'
+            placeholder='blur'
+            blurDataURL='/loading.svg'
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+            }}
+          />
+        </figure>
+        <div className='p-3'>
+          <h2 className='truncate text-lg font-bold'>{original_title}</h2>
+          <p className='text-sm line-clamp-3'>{overview}</p>
+          <div className='flex items-center justify-between'>
+            <div>{release_date}</div>
+            <div className='flex items-center gap-2'>
+              <span>
+                <AiFillStar />
+              </span>
+              <div>{vote_average.toFixed(1)} / 10</div>
+            </div>
           </div>
-        </p>
-      </div>
-    </div>
-  );
+        </div>
+      </Link>
+    );
+  }
+  return <></>;
 }

@@ -1,6 +1,4 @@
-import MovieCard, { MovieListProps } from "@/components/MovieCard";
-import next from "next";
-import json from "../../../../public/dummy.json";
+import MovieCard from "@/components/MovieCard";
 
 export default async function SortedMovies({
   params,
@@ -21,12 +19,12 @@ export default async function SortedMovies({
     throw new Error("Failed to fetch data");
   }
   const data = await res.json();
-  const movieData = data.results;
+  const movieDatas = data.results;
   // const movieData = json.results;
 
   return (
     <div className='grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4 '>
-      {movieData?.map((movie: any) => (
+      {movieDatas?.map((movie: any) => (
         <MovieCard
           key={movie.id}
           original_title={movie.original_title || movie.original_name}
