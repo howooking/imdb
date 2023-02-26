@@ -31,19 +31,22 @@ export default function MovieCard({
         href={`/movie/${id}`}
         className='card glass cursor-pointer shadow-lg transition-all duration-200 hover:opacity-70'
       >
-        <figure>
+        <figure className='aspect-video'>
           <Image
-            src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
+            src={
+              backdrop_path
+                ? `https://image.tmdb.org/t/p/original/${backdrop_path}`
+                : "/default.jpeg"
+            }
             alt={original_title}
             width={500}
             height={300}
+            style={{
+              height: "auto",
+            }}
             className='relative object-contain'
             placeholder='blur'
             blurDataURL='/loading.svg'
-            style={{
-              maxWidth: "100%",
-              height: "auto",
-            }}
           />
         </figure>
         <div className='p-3'>

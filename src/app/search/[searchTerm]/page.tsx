@@ -1,18 +1,14 @@
 import MovieCard from "@/components/MovieCard";
 
-export default async function SortedMovies({
+export default async function page({
   params,
 }: {
   params: {
-    sort: string;
+    searchTerm: string;
   };
 }) {
-  const { sort } = params;
-
   const res = await fetch(
-    `https://api.themoviedb.org/3/${
-      sort === "top_rated" ? "movie/top_rated" : "trending/movie/week"
-    }?api_key=${process.env.TMDB_API_KEY}&page=1`
+    `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&page=1&include_adult=false&query=${params.searchTerm}`
   );
 
   if (!res.ok) {
@@ -20,7 +16,6 @@ export default async function SortedMovies({
   }
   const data = await res.json();
   const movieDatas = data.results;
-  // const movieData = json.results;
 
   return (
     <div className='grid grid-cols-1 gap-5  sm:grid-cols-3 '>
