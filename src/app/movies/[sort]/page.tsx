@@ -14,7 +14,7 @@ export default async function SortedMovies({
   const res = await fetch(
     `https://api.themoviedb.org/3/${
       sort === "top_rated" ? "movie/top_rated" : "trending/all/week"
-    }?api_key=${process.env.TMDB_API_KEY}&language=en-US&page=1`,
+    }?api_key=${process.env.TMDB_API_KEY}&page=1`,
     { next: { revalidate: 100000 } }
   );
 
@@ -26,11 +26,11 @@ export default async function SortedMovies({
   // const movieData = json.results;
 
   return (
-    <div className='flex flex-col gap-6'>
+    <div>
       {movieData?.map((movie: MovieListProps) => (
         <MovieList
           key={movie.id}
-          title={movie.title}
+          original_title={movie.original_title}
           overview={movie.overview}
           release_date={movie.release_date}
           vote_average={movie.vote_average}

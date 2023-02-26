@@ -1,5 +1,5 @@
 export type MovieListProps = {
-  title: string;
+  original_title: string;
   vote_average: number;
   overview: string;
   release_date: string;
@@ -7,14 +7,14 @@ export type MovieListProps = {
 };
 
 export default function MovieList({
-  title,
+  original_title,
   vote_average,
   overview,
   release_date,
 }: MovieListProps) {
   return (
     <div className='bg-orange-300'>
-      <h1>{title}</h1>
+      <h1>{original_title}</h1>
     </div>
   );
 }
